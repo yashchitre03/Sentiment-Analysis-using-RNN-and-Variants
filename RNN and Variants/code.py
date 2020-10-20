@@ -98,12 +98,13 @@ def get_model(SEQ_LEN=51, variant='vanilla_rnn', hidden_neurons=10, batch_size=1
     print(model.summary())
     
     stopping_criteria = EarlyStopping(patience=2,
-                       verbose=1)
+                       verbose=2)
     
     history = model.fit(x=train_padded, 
               y=train_Y,
               batch_size=batch_size,
               epochs=15,
+              verbose=2,
               callbacks=(stopping_criteria),
               validation_data=(validation_padded, validation_Y))
     
